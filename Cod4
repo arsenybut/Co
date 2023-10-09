@@ -1,0 +1,18 @@
+def are_brackets_balanced(expression):
+    stack = []
+    brackets_dict = {')': '(', '}': '{', ']': '['}
+
+    for i in expression:
+        if i in '([{':
+            stack.append(i)
+        elif i in ')]}':
+            if not stack or stack.pop() != brackets_dict[i]:
+                return False
+    return len(stack) == 0
+
+
+expression = "({[()]})"
+if are_brackets_balanced(expression):
+    print("True")
+else:
+    print("False")
